@@ -1,0 +1,12 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include user-management"
+      include_role:
+        name: "user-management"
+      vars:
+        manage_users:
+          - user: user_test
+            user_passwd: 98hj3f
+        new_root_password: 9872gh3u

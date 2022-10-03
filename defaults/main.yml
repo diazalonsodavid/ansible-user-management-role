@@ -1,0 +1,17 @@
+---
+# defaults file for user-management
+
+## Users and password variables.
+
+manage_users:
+  - user:
+    user_passwd:
+  - user:
+    user_passwd:
+  - user:
+    user_passwd:
+
+
+## New root password
+
+new_root_password:

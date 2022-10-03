@@ -1,0 +1,23 @@
+# tasks/ubuntu.yml
+
+
+# Description: Create user and password hashed
+- name: Create user
+  ansible.builtin.user:
+    name: "{{ item.user }}"
+    password: "{{ item.user_passwd | password_hash('sha512') }}"
+  with_items: "{{ manage_users }}"
+
+# Description: Set sudo permission to previous user
+- name: Sudo Permissions
+  ansible.builtin.lineinfile: "dest=/etc/sudoers state=present regexp='^%{{ item.user }}' line='%{{ item.user }} ALL=(ALL) NOPASSWD: ALL'"
+  with_items: "{{ manage_users }}"
+
+# Description: Require tty to sudoers
+- name: Require tty Entry
+  ansible.builtin.lineinfile: dest=/etc/sudoers line='Defaults !requiretty'
+
+- name: Passwd Root Change
+  ansible.builtin.user:
+    name: root
+    password: "{{ new_root_password | password_hash('sha512') }}"
