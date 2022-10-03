@@ -1,0 +1,9 @@
+---
+
+use_default_rules: true
+
+skip_list:
+  - meta-no-info # should contain: author, description, license, min_ansible_version, platforms
+  - meta-incorrect
+  #- role-name # Role name does not match ^[a-z][a-z0-9_]*$ pattern.
+  - schema
