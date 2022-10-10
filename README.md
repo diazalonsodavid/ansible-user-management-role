@@ -1,6 +1,6 @@
-User Management
+User Management Role
 =========
-Role to create a list of users and change root password.
+Role to manage a list of users.
 
 Users and Passwords will be defined as variables in default folder
 
