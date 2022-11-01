@@ -7,6 +7,8 @@
         name: "user-management"
       vars:
         manage_users:
-          - user: user_test
+          - user: ago
             user_passwd: 98hj3f
+            groups: ""
+            key: ago_id_rsa.pub
         new_root_password: 9872gh3u

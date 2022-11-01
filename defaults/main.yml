@@ -6,10 +6,16 @@
 manage_users:
   - user:
     user_passwd:
+    groups:
+    key:
   - user:
     user_passwd:
+    groups:
+    key:
   - user:
     user_passwd:
+    groups:
+    key:
 
 
 ## New root password

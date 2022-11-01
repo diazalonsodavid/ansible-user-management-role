@@ -3,5 +3,5 @@
 
 # Description: Check OS and include ubuntu.yml
 - name: User Management
-  include_tasks: "ubuntu.yml"
+  ansible.builtin.include_tasks: "ubuntu.yml"
   when: ansible_facts['distribution'] == "Ubuntu"

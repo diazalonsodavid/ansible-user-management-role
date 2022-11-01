@@ -6,6 +6,8 @@
   ansible.builtin.user:
     name: "{{ item.user }}"
     password: "{{ item.user_passwd | password_hash('sha512') }}"
+    groups: "{{ item.groups }}"
+    shell: /bin/bash
   with_items: "{{ manage_users }}"
 
 # Description: Set sudo permission to previous user
@@ -16,6 +18,13 @@
 # Description: Require tty to sudoers
 - name: Require tty Entry
   ansible.builtin.lineinfile: dest=/etc/sudoers line='Defaults !requiretty'
+
+- name: Set authorized key took from file
+  ansible.posix.authorized_key:
+    user: "{{ item.user }}"
+    state: present
+    key: "{{ lookup('file', 'files/{{ item.key }}') }}"
+  with_items: "{{ manage_users }}"
 
 - name: Passwd Root Change
   ansible.builtin.user:
